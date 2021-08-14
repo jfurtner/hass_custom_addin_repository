@@ -1,14 +1,15 @@
 {
 	"name": "Log syslog forwarder",
-	"version": "1",
+	"version": "1.0.1",
 	"slug": "hass_log_syslog_forwarder",
 	"description": "Forward home-assistant.log to a remote syslog server",
 	"arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
 	"startup": "system",
+	"url": "https://github.com/jfurtner/hass_custom_addin_repository",
 	"boot": "auto",
 	"options": 
 	{
-		"rsyslog_host": "set your syslog server here name or IP address",
+		"rsyslog_host": "set your syslog server here: name or IP address",
 		"rsyslog_port": 514,
 		"filter_regexps": [".*"]
 	},

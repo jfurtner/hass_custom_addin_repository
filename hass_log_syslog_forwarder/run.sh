@@ -18,7 +18,9 @@ for regexp in "$(bashio::config 'filter_regexps')" ; do
 done
 set +o noglob
 
+echo "$CONFIG_FILE copy START ----"
 cat $CONFIG_FILE
+echo "$CONFIG_FILE copy END ------"
 
 echo Starting swatchdog
 swatchdog --config-file $CONFIG_FILE --tail-file /config/home-assistant.log --restart-time="03:25am" --tail-args="-F"
