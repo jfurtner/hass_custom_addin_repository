@@ -1,6 +1,6 @@
 {
 	"name": "Log syslog forwarder",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"slug": "hass_log_syslog_forwarder",
 	"description": "Forward home-assistant.log to a remote syslog server",
 	"arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
