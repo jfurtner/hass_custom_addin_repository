@@ -6,7 +6,7 @@ echo "Creating $CONFIG_FILE"
 
 RSYSLOG_HOST=$(bashio::config 'rsyslog_host')
 RSYSLOG_PORT=$(bashio::config 'rsyslog_port')
-LOGGER_LINE="  exec logger --server $RSYSLOG_HOST --port $RSYSLOG_PORT -- \"\$_\""
+LOGGER_LINE="  pipe logger --server $RSYSLOG_HOST --port $RSYSLOG_PORT"
 
 set -o noglob
 echo "# built on `date`" > "$CONFIG_FILE"
