@@ -1,5 +1,5 @@
 name: PostgreSQL Materialized View Refresh tool
-version: 0.1.1
+version: 0.1.2
 slug: postgresql_materialized_view_refresh_tool
 description: Refresh PostgreSQL materialized views on a regular basis
 url: https://github.com/jfurtner/hassio-addons/\postgresql-materialized-view-refresh
@@ -22,4 +22,5 @@ schema:
   views:
     - name: str
       refresh_frequency_minutes: int(5,)?
+  database_time_zone: str?
 tmpfs: true

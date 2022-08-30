@@ -37,6 +37,13 @@ unset dbProto
 if [[ -z ${dbPort-} ]] ; then
 	dbPort=5432
 fi
+
+dbTimeZone="$(bashio::config 'database_time_zone')"
+if [[ -z ${dbTimeZone-} ]] ; then
+	dbTimeZone="America/Denver"
+fi
+
+
 bashio::log.info "DB info: user: $dbUser @ $dbHost:$dbPort database: $dbName"
 
 bashio::log.debug "Creating PGPASSFILE"
@@ -73,8 +80,9 @@ while `true` ; do
 
 		if [[ $next_change_time -lt $loop_datetime ]] ; then
 			bashio::log.debug "updating view $viewname"
-			psql -h $dbHost -U $dbUser -d $dbName -c "REFRESH MATERIALIZED VIEW \"$viewname\"" || true
+			psql --host $dbHost --username $dbUser --dbname $dbName --no-psqlrc --single-transaction  --command "SET TIME ZONE '$dbTimeZone'; REFRESH MATERIALIZED VIEW \"$viewname\"; " || true
 			touch $statFile
+			bashio::log.debug "Update complete"
 		fi
 
 	done
