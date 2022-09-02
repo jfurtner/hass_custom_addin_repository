@@ -16,11 +16,13 @@ options:
   views:
     - name: fan_on_time_since_filter_change
       refresh_frequency_minutes: 5 # time in minutes
+      daily_time_24h: "23:59" # 24h time to start from
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)
   database_connection_url: str
   views:
     - name: str
       refresh_frequency_minutes: int(5,)?
+      daily_time_24h: str?
   database_time_zone: str?
 tmpfs: true

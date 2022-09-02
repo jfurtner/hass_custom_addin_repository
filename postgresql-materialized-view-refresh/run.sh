@@ -52,6 +52,29 @@ touch $PGPASSFILE
 chmod 600 $PGPASSFILE
 echo "$dbHost:$dbPort:$dbName:$dbUser:$dbPass" > $PGPASSFILE
 
+bashio::log.debug "Setting start date"
+for view in $(bashio::config 'views|keys') ; do
+	viewname=$(bashio::config "views[$view].name")
+	
+	bashio::log.debug "Checking view $viewName for starting time"
+	if bashio::config.exists "views[$view].daily_time_24h" ; then
+		bashio::log.debug "$viewName has daily_time_24h set"
+		refresh_frequency_minutes=$(( (24 * 60 ) + 1))
+		
+		daily_time_24h=$(bashio::config "views[$view].daily_time_24h")
+		bashio::log.debug "daily_time_24h: [$daily_time_24h]"
+		
+		now=$( date --date="$daily_time_24h" +%s )		
+		statFile="/tmp/$viewname"
+
+		nowPlus1Day=$(( now + 86400 ))		
+		bashio::log.debug "Setting $statFile to $nowPlus1Day"
+		
+		touch -t "@$nowPlus1Day" $statFile 
+	fi
+	
+done
+
 bashio::log.info "Starting loop"
 while true ; do
 	loop_datetime=$(date +%s)
