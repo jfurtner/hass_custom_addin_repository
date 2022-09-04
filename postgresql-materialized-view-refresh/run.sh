@@ -59,7 +59,7 @@ for view in $(bashio::config 'views|keys') ; do
 	bashio::log.debug "Checking view $viewname for starting time"
 	if bashio::config.exists "views[$view].daily_time_24h" ; then
 		bashio::log.debug "$viewname has daily_time_24h set"
-		refresh_frequency_minutes=$(( (24 * 60 ) + 1))
+		refresh_frequency_minutes=$(( 24 * 60 ))
 		
 		daily_time_24h=$(bashio::config "views[$view].daily_time_24h")
 		bashio::log.debug "daily_time_24h: [$daily_time_24h]"
