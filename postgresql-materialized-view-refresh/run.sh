@@ -40,7 +40,7 @@ fi
 
 dbTimeZone="$(bashio::config 'database_time_zone')"
 if [[ -z ${dbTimeZone-} ]] ; then
-	dbTimeZone="America/Denver"
+	dbTimeZone="America/Denver" # centre of the world?
 fi
 
 
