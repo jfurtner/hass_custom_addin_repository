@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/usr/bin/with-contenv bashio 
 
 LOG_LEVEL="$(bashio::config 'log_level' 'info')"
 bashio::log.level "$LOG_LEVEL"
@@ -8,7 +8,7 @@ bashio::log.notice "Starting SCP copy `date`"
 MOD_TIME="$(bashio::config 'mtime' '-1')"
 bashio::log.debug "MTIME: ${MOD_TIME}"
 
-bashio::log.debug "Searching for backups modified in last 24h"
+bashio::log.debug "Searching for backups modified in last $(MOD_TIME) day(s)"
 files=$( find /backup -name *.tar -maxdepth 1 -mtime $MOD_TIME )
 
 
