@@ -1,0 +1,32 @@
+name: SCP Copy (enhanced)
+version: 1.1.4
+slug: scp_copy
+description: Copies snapshots to a remote location via SCP
+arch:
+  - armhf
+  - armv7
+  - amd64
+  - i386
+  - aarch64
+startup: once
+boot: manual
+map: 
+  - config
+  - backup
+url: https://github.com/jfurtner/hassio-addons/tree/master/scp-copy
+init: false
+options:
+  log_level: info
+  private_key: /config/.ssh/id_rsa
+  remote_host: remotehost
+  remote_user: hauser
+  remote_path: /mnt/backup/ha
+  mtime: -1
+schema:
+  log_level: list(trace|debug|info|notice|warning|error|fatal)
+  private_key: str
+  remote_host: str
+  remote_user: str
+  remote_path: str
+  mtime: int(-99999,-1)
+homeassistant_api: true

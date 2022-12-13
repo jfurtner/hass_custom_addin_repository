@@ -37,20 +37,27 @@ mode: single
 
 Add-on configuration:
 
-### Option `private_key`
+### Option `log_level`
+Log level of the add on.
 
+### Option `private_key`
 The private key to use to initiate the SCP.
 
 Default: `/config/.ssh/id_rsa`
 
 ### Option `remote_host`
-
 The remote ip address or hostname to copy the snapshot to.
 
 ### Option `remote_user`
-
 The remote user to use when logging into the host.
 
 ### Option `remote_path`
-
 The location to copy the snapshots.
+
+### Option `mtime`
+Last modified time to use when copying backups
+
+## Events
+- scp_copy_complete : Fired when copy is completed by SCP. Helps to monitor SCP so 
+backups can be verified or actioned if they do not correctly fire.
+Data in the event is the result code from SCP. 0 is OK, anything else is an error.
