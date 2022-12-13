@@ -21,12 +21,12 @@ options:
   remote_host: remotehost
   remote_user: hauser
   remote_path: /mnt/backup/ha
-  mtime: -1
+  mtime: "-1"
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)
   private_key: str
   remote_host: str
   remote_user: str
   remote_path: str
-  mtime: int(-99999,-1)
+  mtime: str?
 homeassistant_api: true
