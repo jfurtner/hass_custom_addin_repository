@@ -5,3 +5,7 @@ Home Assistant addins created by me (jamie*A*furtner.ca)
    - Home Assistant addin to forward home-assistant.log from HASS to a remote syslog server
 - postgresql-materialized-view-refresh 
    - Refresh PGSQL materialized views on a timer
+- scp-copy
+   - Fork of https://github.com/darthsebulba04/hassio-addons/scp-copy
+   - Offload backups to a system over SSH with SCP
+   - updated for platform changes in 2022-11
