@@ -60,4 +60,31 @@ Last modified time to use when copying backups
 ## Events
 - scp_copy_complete : Fired when copy is completed by SCP. Helps to monitor SCP so 
 backups can be verified or actioned if they do not correctly fire.
-Data in the event is the result code from SCP. 0 is OK, anything else is an error.
+Data in the event is the `result` code from SCP. 0 is OK, anything else is an error.
+
+
+```
+alias: Event - scp_copy_complete - Backup - SCP Copy addon completed offload
+description: ""
+trigger:
+  - platform: event
+    event_type: scp_copy_complete
+condition: []
+action:
+  - if:
+      - condition: template
+        value_template: "{{ trigger.event.data.result | int(-1) == 0}}"
+    then:
+      - service: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.scp_copy_last_on
+        data:
+          timestamp: "{{ utcnow()|as_timestamp }}"
+    else:
+      - service: persistent_notification.create
+        data:
+          notification_id: backup_scp_copy_failed
+          title: Backup
+          message: SCP copy failed. Error number {{ trigger.event.data.result }}
+mode: single
+```
