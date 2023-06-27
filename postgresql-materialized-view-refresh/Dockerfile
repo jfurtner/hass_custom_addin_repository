@@ -1,3 +1,4 @@
+# see build.yaml
 ARG BUILD_FROM=ghcr.io/hassio-addons/base:12.2.2
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}

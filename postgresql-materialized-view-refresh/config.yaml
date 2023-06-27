@@ -1,8 +1,8 @@
 name: PostgreSQL Materialized View Refresh tool
-version: 0.1.3
+version: 0.1.4
 slug: postgresql_materialized_view_refresh_tool
 description: Refresh PostgreSQL materialized views on a regular basis
-url: https://github.com/jfurtner/hassio-addons/\postgresql-materialized-view-refresh
+url: https://github.com/jfurtner/hassio-addons/postgresql-materialized-view-refresh
 init: false
 arch:
   - aarch64
