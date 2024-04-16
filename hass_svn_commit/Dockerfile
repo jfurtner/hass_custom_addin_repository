@@ -9,6 +9,7 @@ RUN chmod a+x /run.sh
 
 # Setup base
 RUN apk add --no-cache \
+    mosquitto-clients \
     subversion
 CMD [ "/run.sh" ]
 

@@ -1,5 +1,5 @@
 name: Subversion Checkin
-version: 1.0.4
+version: 1.0.5
 slug: hass_svn_commit
 description: Execute subversion checkin command
 url: https://github.com/jfurtner/hass_custom_addin_repository
@@ -14,17 +14,21 @@ startup: once
 boot: manual
 options:
   log_level: trace
-  username: subversion_user
-  password: mySecretPassword
+  svn_username: subversion_user
+  svn_password: mySecretPassword
   excludes:
     - .storage
     - zigbee2mqtt/state.json
+  mqtt_username: mqtt_user
+  mqtt_password: mqtt_password
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)
-  username: str
-  password: password
+  svn_username: str
+  svn_password: password
   excludes:
     - str
+  mqtt_username: str
+  mqtt_password: password
 map:
   - config:rw
 tmpfs: true
