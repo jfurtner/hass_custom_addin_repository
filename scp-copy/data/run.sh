@@ -8,7 +8,7 @@ bashio::log.notice "Starting SCP copy `date`"
 MOD_TIME="$(bashio::config 'mtime' '-1')"
 bashio::log.debug "MTIME: ${MOD_TIME}"
 
-bashio::log.debug "Searching for backups modified in last $(MOD_TIME) day(s)"
+bashio::log.debug "Searching for backups modified in last ${MOD_TIME} day(s)"
 files=$( find /backup -name *.tar -maxdepth 1 -mtime $MOD_TIME )
 
 
@@ -38,5 +38,8 @@ bashio::log.debug "Post scp_copy_complete event"
 bashio::log.info `curl --no-progress-meter -X POST -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" -H "Content-Type: application/json" --data "{\"result\":\"${RESULT}\"}" "http://supervisor/core/api/events/scp_copy_complete" 2>&1`
 
 bashio::log.debug "Posted event"
+
+bashio::log.debug "Sleep to reset CPU usage"
+sleep 120
 
 bashio::log.notice "Done  `date`"
