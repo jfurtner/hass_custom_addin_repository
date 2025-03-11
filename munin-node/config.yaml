@@ -1,30 +1,32 @@
 name: Munin-Node
+
 version: 2.0-0.1
+
 slug: munin_node
+
 description: Hosts Munin Node for external use
+
 arch:
   - armhf
   - armv7
   - amd64
   - i386
   - aarch64
+
 startup: application
+
 boot: auto
-#map: 
-#  - config
-#  - backup
+
 url: https://github.com/jfurtner/hassio-addons/tree/master/munin-node
+
 init: false
+
 options:
   log_level: debug
   allow:
     - '^192\.0\.2\.1$'
-  host_name: "ha-int"
-#  private_key: /config/.ssh/id_rsa
-#  remote_host: remotehost
-#  remote_user: hauser
-#  remote_path: /mnt/backup/ha
-#  mtime: "-1"
+  host_name: "homeassistant.local"
+
 full_access: true
 
 schema:
@@ -32,14 +34,11 @@ schema:
   allow:
     - str
   host_name: str
-#  private_key: str
-#  remote_host: str
-#  remote_user: str
-#  remote_path: str
-#  mtime: str?
-#homeassistant_api: true
+
 ports:
   "4949/tcp": 4949
+
 ports_description:
   "4949/tcp": Munin node port
+
 tmpfs: true
