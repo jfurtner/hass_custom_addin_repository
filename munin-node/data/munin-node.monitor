@@ -1,0 +1,4 @@
+set terminal batch
+
+check process munin-node pidfile /run/munin/munin-node.pid
+	start program = "/usr/sbin/munin-node"

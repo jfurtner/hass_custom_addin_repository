@@ -4,12 +4,15 @@ FROM ${BUILD_FROM}
 
 ENV LANG C.UTF-8
 
+#COPY data/munin-node.monitor /
+#RUN chmod 0600 /munin-node.monitor
+
 # Copy data for add-on
 COPY data/run.sh /
 RUN chmod a+x /run.sh
 
 # Install requirements for add-on
-RUN apk add --no-cache openssh
+RUN apk add --no-cache munin-node
 
 # So let's set it to our add-on persistent data directory.
 
